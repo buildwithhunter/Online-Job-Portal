@@ -1,0 +1,3 @@
+package com.jobportal.servlet;
+import com.jobportal.dao.UserDAO;import jakarta.servlet.*;import jakarta.servlet.annotation.WebServlet;import jakarta.servlet.http.*;import java.io.IOException;
+@WebServlet("/register") public class RegisterServlet extends HttpServlet { protected void doPost(HttpServletRequest q,HttpServletResponse p)throws ServletException,IOException {boolean ok=new UserDAO().register(q.getParameter("name"),q.getParameter("email"),q.getParameter("password"),q.getParameter("role"));if(ok)p.sendRedirect("login.html");else p.getWriter().println("Registration failed. Check database configuration.");} }
